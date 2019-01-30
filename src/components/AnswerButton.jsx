@@ -6,8 +6,16 @@ class AnswerButton extends Component {
   
   render() {
     return (
-      <div>
-        Fortnite
+      <div className='jumbotron'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col'>
+              {
+                this.props.answertext
+              }
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

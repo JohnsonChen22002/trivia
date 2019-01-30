@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import Question from './Question.jsx';
-import Answer from './AnswerButton.jsx';
+import AnswerButton from './AnswerButton.jsx';
 import Reset from './RestButton';
-// import ResetButton from './RestButton.jsx';
-// import AnswerButton from './AnswerButton.jsx';
+const question = 'What was the most popular game in 2018?'
+const answers = ["Fortnite", "Red Dead Redemption II", "Tetris", "Legend of Zelda: Breath of the Wild"];
+ 
 
-// import components
 
 class App extends Component {
 
@@ -14,8 +14,12 @@ class App extends Component {
     return (
       <div className="app">
         Trivia!
-        <Question/>
-        <Answer/>
+        <Question questiontext={question}/>
+        {
+          answers.map(function(answer){
+            return <AnswerButton  answertext={answer}/>;
+          })
+        }
         <Reset/>
       </div>
     );
