@@ -7,7 +7,7 @@ class Question extends Component {
   render() {
     return (
       <div>
-        Add your QuestionText, Reset Button and AnswerButtons here.  
+        <h1>What was the most popular game in the year of 2018?</h1> 
       </div>
     );
   }
