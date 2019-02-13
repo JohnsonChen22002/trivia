@@ -40,17 +40,31 @@ class App extends Component {
     
   }
   
+  onAnswerButtonClicked =(index)=>{
+    this.setState({
+      selectedAnswer: index === this.state.currentQuestion.correct_choice_index
+    })
+  }
+  
   render() {
     return (
       <div className="app">
         Trivia!
-        <Question questiontext={this.state.currentQuestion.question_text}/>
+        <Question
+          questiontext={this.state.currentQuestion.question_text}
+          
+        />
         {
-          this.state.currentQuestion.choices.map(function(answer){
-            return <AnswerButton  answertext={answer}/>;
+          this.state.currentQuestion.choices.map((answer, index)=>{
+            return <AnswerButton  
+            questionNum={index}
+            answertext={answer}
+            handleAnswerClick={this.onAnswerButtonClicked}
+            />;
           })
         }
         <Reset/>
+  
       </div>
     );
   }

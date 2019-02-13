@@ -10,9 +10,7 @@ class AnswerButton extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col'>
-              {
-                this.props.answertext
-              }
+              <button onClick={()=> this.props.handleAnswerClick(this.props.questionNum)}>{this.props.answertext}</button>
             </div>
           </div>
         </div>
