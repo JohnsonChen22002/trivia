@@ -17,6 +17,7 @@ class App extends Component {
     
     this.state = {
       questions : {},
+      showBanner: false,
       currentQuestion: {
         question_text: 'Question',
         choices: [],
@@ -31,9 +32,7 @@ class App extends Component {
       console.log(question);
       const nextChoices = question.choices;
       this.setState({
-        currentQuestion: {
-          choices: nextChoices,
-        }
+        currentQuestion: question
       })
     });
 
@@ -44,9 +43,40 @@ class App extends Component {
     this.setState({
       selectedAnswer: index === this.state.currentQuestion.correct_choice_index
     })
+    
+    const correctAnswer = index === this.state.currentQuestion.correct_choice_index
+    if(correctAnswer){
+      return this.setState({showBanner:true});
+    }else{
+      alert('Y E E T');
+    }
   }
   
   render() {
+    if(this.state.showBanner){
+      return (
+      <div className="app">
+        Trivia!
+        Right!
+        <Question
+          questiontext={this.state.currentQuestion.question_text}
+          
+        />
+        {
+          this.state.currentQuestion.choices.map((answer, index)=>{
+            return <AnswerButton  
+            questionNum={index}
+            answerText={answer}
+            handleAnswerClick={this.onAnswerButtonClicked}
+            />;
+          })
+        }
+        
+        <Reset/>
+  
+      </div>
+    );
+    }
     return (
       <div className="app">
         Trivia!
@@ -58,11 +88,12 @@ class App extends Component {
           this.state.currentQuestion.choices.map((answer, index)=>{
             return <AnswerButton  
             questionNum={index}
-            answertext={answer}
+            answerText={answer}
             handleAnswerClick={this.onAnswerButtonClicked}
             />;
           })
         }
+        
         <Reset/>
   
       </div>
