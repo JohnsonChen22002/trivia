@@ -5,10 +5,11 @@ import React, { Component } from 'react';
 class Question extends Component {
   
   render() {
+    const color = this.props.color || 'black';
     return (
       <div>
 
-        <h1>{this.props.questiontext}</h1>
+        <h1 style={{color}}>{this.props.questiontext}</h1>
       
       </div>
     );
